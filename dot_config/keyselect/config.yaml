@@ -45,3 +45,6 @@ menu:
       - key: "l"
         desc: Lock
         cmd: hyprlock
+      - key: "p"
+        desc: Power Down
+        cmd: poweroff
