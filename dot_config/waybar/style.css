@@ -1,0 +1,112 @@
+@import url("colors.css");
+
+* {
+  font-size: 18px;
+}
+
+window#waybar {
+  font-family: "JetBrainsMono Nerd Font";
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 13px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+button {
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+  border-radius: 0;
+}
+
+/* Hover effect */
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 -3px @foreground;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background-color: transparent;
+  color: @foreground;
+  font-family: "Rainworldglyphs";
+  font-size: 18px;
+}
+
+#workspaces button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+  background: @foreground;
+  box-shadow: inset 0 -3px @foreground;
+}
+
+#workspaces button.urgent {
+  background-color: @color1;
+}
+
+#mode {
+  background-color: @color8;
+  box-shadow: inset 0 -3px @foreground;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio {
+  padding: 0 10px;
+  color: @foreground;
+}
+
+.modules-right,
+.modules-left,
+.modules-center {
+  color: @foreground;
+  background-color: @background;
+  border-radius: 15px;
+}
+
+.modules-right {
+  padding: 0 10px;
+}
+
+.modules-left {
+  padding: 0 20px;
+}
+
+.modules-center {
+  padding: 0 10px;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @color4;
+}
+
+@keyframes blink {
+  to {
+    color: @background;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: @color1;
+  color: @foreground;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: @background;
+  color: @foreground;
+}
+
+#pulseaudio.muted {
+  color: @foreground;
+}

@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+: "${WF_API_KEY:?}"
+: "${WF_CITY:?}"
+WF_COUNTRY="${WF_COUNTRY:-}"
+
+if [[ -n "$WF_COUNTRY" ]]; then
+    LOCATION="${WF_CITY},${WF_COUNTRY}"
+else
+    LOCATION="${WF_CITY}"
+fi
+
+URL="https://api.openweathermap.org/data/2.5/weather?q=${LOCATION}&appid=${WF_API_KEY}&units=metric&lang=en"
+
+RESPONSE="$(curl -s "$URL")"
+COD="$(echo "$RESPONSE" | jq -r '.cod')"
+
+if [[ "$COD" != "200" ]]; then
+    case "$COD" in
+        401) echo "Invalid API key." ;;
+        404) echo "Invalid city or country." ;;
+        *)   echo "Error: $RESPONSE" ;;
+    esac
+    exit 1
+fi
+
+WEATHER_MAIN="$(echo "$RESPONSE" | jq -r '.weather[0].main')"
+DESCRIPTION="$(echo "$RESPONSE" | jq -r '.weather[0].description')"
+
+TEMP="$(echo "$RESPONSE" | jq -r '.main.temp')"
+HUMIDITY="$(echo "$RESPONSE" | jq -r '.main.humidity')"
+
+WIND_SPEED="$(echo "$RESPONSE" | jq -r '.wind.speed')"
+
+case "$WEATHER_MAIN" in
+    Clear)
+        cat <<'EOF'
+      \   /
+       .-.
+    ‒ (   ) ‒
+       `-᾿
+      /   \
+EOF
+        ;;
+    Clouds)
+        cat <<'EOF'
+       .--.
+    .-(    ).
+   (___.__)__)
+EOF
+        ;;
+    Rain)
+        cat <<'EOF'
+       .--.
+    .-(    ).
+   (___.__)__)
+   ʻ‚ʻ‚ʻ‚ʻ‚ʻ‚
+EOF
+        ;;
+    Snow)
+        cat <<'EOF'
+       .--.
+    .-(    ).
+   (___.__)__)
+    * * * * *
+EOF
+        ;;
+    *)
+        cat <<'EOF'
+       .--.
+    .-(    ).
+   (___.__)__)
+EOF
+        ;;
+esac
+
+echo "Weather in ${LOCATION}"
+echo "Description: ${DESCRIPTION}"
+echo "Temperature: ${TEMP}°C"
+echo "Humidity: ${HUMIDITY}%"
+echo "Wind: ${WIND_SPEED} m/s"

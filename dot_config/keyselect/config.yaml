@@ -1,0 +1,47 @@
+ui:
+  show_path: true
+  show_lines: true
+  show_hints: false
+  submenu_symbol: ">"
+
+binds:
+  quit: "q"
+  back: "h"
+
+menu:
+  - key: "r"
+    desc: Comms
+    submenu:
+      - key: "v"
+        desc: Vesktop
+        cmd: vesktop
+      - key: "i"
+        desc: IRC
+        submenu:
+          - key: "l"
+            desc: Liberachat
+            cmd: kitty -e catgirl liberachat
+          - key: "t"
+            desc: Tildechat
+            cmd: kitty -e catgirl tildechat
+          - key: "u"
+            desc: Undernet
+            cmd: kitty -e catgirl undernet
+  - key: "g"
+    desc: Games
+    submenu:
+      - key: "s"
+        desc: Steam
+        cmd: steam
+      - key: "g"
+        desc: Genshin Impact
+        cmd: an-anime-game-launcher
+      - key: "c"
+        desc: Celeste
+        cmd: steam -applaunch 504230
+  - key: "p"
+    desc: Power
+    submenu:
+      - key: "l"
+        desc: Lock
+        cmd: hyprlock

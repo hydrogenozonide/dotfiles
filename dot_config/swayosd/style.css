@@ -1,0 +1,55 @@
+/* cry about it */
+@import url(../../.cache/wal/colors-waybar.css);
+
+* {
+	font-family: "JetBrainsMono Nerd Font";
+	font-size: 18px;
+	font-weight: normal;
+}
+
+window#osd {
+  border-radius: 7px;
+  border: 2px solid @color12;
+  background: @background;
+}
+
+window#osd #container {
+  margin: 6px;
+  padding: 2px;
+  background: transparent;
+}
+
+window#osd image {
+  -gtk-icon-transform: scale(0.7);
+}
+
+window#osd image,
+window#osd label {
+  color: @foreground;
+}
+
+window#osd progressbar:disabled,
+window#osd image:disabled {
+  opacity: 0.5;
+}
+
+window#osd progressbar {
+  min-height: 6px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+}
+
+window#osd trough {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: @background;
+}
+
+window#osd progress {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: @foreground;
+}

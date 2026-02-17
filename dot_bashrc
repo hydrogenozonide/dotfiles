@@ -12,7 +12,7 @@ PS1='[\u@\h \W]\$ '
 . "$HOME/.cargo/env"
 
 export PATH=$PATH:~/.config/scripts/
-export HYPRSHOT_DIR=~/screenshots
+export $EDITOR="/usr/bin/nvim"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 source ~/.keys

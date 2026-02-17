@@ -1,0 +1,27 @@
+#!/bin/bash
+
+while true; do
+    SELECTED=$(ls "$HOME/wallpapers"/*.{png,jpg,jpeg,gif,webp} 2>/dev/null | \
+        xargs -n 1 basename | \
+        fuzzel --dmenu --prompt "Select a wallpaper:" --width 24)
+
+    if [ -n "$SELECTED" ]; then
+        swww img --transition-fps 60 \
+                 --transition-type grow \
+                 --transition-duration 0.5 \
+                 --transition-bezier 1,0.9,1,0.7 \
+                 --invert-y \
+                 "$HOME/wallpapers/$SELECTED"
+        matugen image "$HOME/wallpapers/$SELECTED" -t scheme-vibrant
+        walcord
+		swaync-client --reload-css
+		rm $HOME/wallpapers/blurred.png
+        convert "$HOME/wallpapers/$SELECTED" -blur 0x30 -modulate 100,70 \
+          "$HOME/wallpapers/blurred.png"
+        swww img -n overlay "$HOME/wallpapers/blurred.png"
+
+        break
+    else
+        break
+    fi
+done
