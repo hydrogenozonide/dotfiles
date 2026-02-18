@@ -9,8 +9,39 @@ binds:
   back: "h"
 
 menu:
-  - key: "r"
-    desc: Comms
+  - key: "u"
+    desc: Utilities
+    submenu:
+      - key: "k"
+        desc: Kitty
+        cmd: kitty
+      - key: "f"
+        desc: Firefox
+        cmd: firefox
+      - key: "s"
+        desc: Scripts
+        submenu:
+          - key: "w"
+            desc: Wallpaper
+            cmd: bash $HOME/.config/scripts/wallswitch
+            # add more here later
+      - key: "p"
+        desc: toki pona
+        submenu:
+          - key: "n"
+            desc: Number Converter
+            cmd: kitty -e nanpa
+          - key: "l"
+            desc: Linku.la TUI
+            cmd: kitty -e echo "fix later" # add this when script is done
+      - key: "t"
+        desc: Tools
+        submenu:
+          - key: "b"
+            desc: Btop
+            cmd: kitty -e btop
+  - key: "s"
+    desc: Social
     submenu:
       - key: "v"
         desc: Vesktop
@@ -72,6 +103,15 @@ menu:
       - key: "l"
         desc: Lock
         cmd: hyprlock
+      - key: "s"
+        desc: Suspend
+        cmd: systemctl suspend
+      - key: "r"
+        desc: Reboot
+        cmd: systemctl reboot
+      - key: "u"
+        desc: Reboot to UEFI
+        cmd: systemctl reboot --firmware-setup
       - key: "p"
         desc: Power Down
-        cmd: poweroff
+        cmd: systemctl poweroff
