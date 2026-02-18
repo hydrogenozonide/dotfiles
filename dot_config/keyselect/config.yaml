@@ -15,6 +15,9 @@ menu:
       - key: "v"
         desc: Vesktop
         cmd: vesktop
+      - key: "m"
+        desc: Matrix (cinny)
+        cmd: cinny
       - key: "i"
         desc: IRC
         submenu:
@@ -39,6 +42,30 @@ menu:
       - key: "c"
         desc: Celeste
         cmd: steam -applaunch 504230
+      - key: "n"
+        desc: Noita
+        cmd: steam --applaunch 881100
+      - key: "d"
+        desc: Geometry Dash
+        cmd: steam -applaunch 322170
+  - key: "m"
+    desc: Multimedia
+    submenu:
+      - key: "o"
+        desc: OBS Studio
+        cmd: flatpak run com.obsproject.Studio
+      - key: "k"
+        desc: Kdenlive
+        cmd: kdenlive
+      - key: "d"
+        desc: Krita
+        cmd: krita
+      - key: "b"
+        desc: Blender
+        cmd: blender
+      - key: "g"
+        desc: GIMP
+        cmd: gimp
   - key: "p"
     desc: Power
     submenu:
