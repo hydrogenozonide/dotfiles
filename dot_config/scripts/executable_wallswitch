@@ -1,15 +1,19 @@
 #!/bin/bash
 
 WALLPAPER_DIR="$HOME/wallpapers"
-TEMPFILE="/tmp/yazi-wallpaper-choice"
+CACHE_DIR="$HOME/.cache/yazi-wallpapers"
+mkdir -p "$CACHE_DIR"
+
+CHOOSER_FILE="$CACHE_DIR/chooser.tmp"
+BLURRED_FILE="$CACHE_DIR/blurred.png"
 
 while true; do
-    rm -f "$TEMPFILE"
-    yazi "$WALLPAPER_DIR" --chooser-file="$TEMPFILE"
+    rm -f "$CHOOSER_FILE"
+    yazi "$WALLPAPER_DIR" --chooser-file="$CHOOSER_FILE"
     
-    [ -f "$TEMPFILE" ] || break
+    [ -f "$CHOOSER_FILE" ] || break
 
-    SELECTED=$(cat "$TEMPFILE")
+    SELECTED=$(cat "$CHOOSER_FILE")
     [ -n "$SELECTED" ] || break
 
     swww img --transition-fps 60 --transition-type outer --transition-step 90 --transition-pos 0.854,0.997 "$SELECTED"
@@ -18,9 +22,9 @@ while true; do
         matugen image "$SELECTED" -t scheme-vibrant &
         walcord &
         swaync-client --reload-css &
-        rm -f "$WALLPAPER_DIR/blurred.png"
-        convert "$SELECTED" -blur 0x30 -modulate 100,70 "$WALLPAPER_DIR/blurred.png"
-        swww img -n overlay "$WALLPAPER_DIR/blurred.png"
+        rm -f "$BLURRED_FILE"
+        convert "$SELECTED" -blur 0x30 -modulate 100,70 "$BLURRED_FILE"
+        swww img -n overlay "$BLURRED_FILE"
     ) >/dev/null 2>&1 & disown
 
     break
