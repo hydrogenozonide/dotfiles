@@ -17,15 +17,15 @@ My silly Niri dotfiles, managed via [Chezmoi](https://www.chezmoi.io/). I can't 
 
 # TODO
 
+ - [ ] Rewrite in ~~Quickshell~~ Fabric! I've found it a lot easier so far
  - [ ] Unified install script
- - [ ] Better wallpaper script
+ - [x] Better wallpaper script
  - [ ] Fiddle with Niri a little more
  - [ ] Make an actually good panel
  - [ ] Screw with Matugen to maybe get some nicer colours
  - [ ] Fix tidal in Neovim
  - [ ] Replace fuzzel
  - [ ] Improve the styling of Rmpc
- - [ ] Rewrite in Quickshell
  - [ ] Nicer power menu
 
 # Credits
