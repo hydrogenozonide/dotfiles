@@ -1,27 +1,27 @@
 #!/bin/bash
 
+WALLPAPER_DIR="$HOME/wallpapers"
+TEMPFILE="/tmp/yazi-wallpaper-choice"
+
 while true; do
-    SELECTED=$(ls "$HOME/wallpapers"/*.{png,jpg,jpeg,gif,webp} 2>/dev/null | \
-        xargs -n 1 basename | \
-        fuzzel --dmenu --prompt "Select a wallpaper:" --width 24)
+    rm -f "$TEMPFILE"
+    yazi "$WALLPAPER_DIR" --chooser-file="$TEMPFILE"
+    
+    [ -f "$TEMPFILE" ] || break
 
-    if [ -n "$SELECTED" ]; then
-        swww img --transition-fps 60 \
-                 --transition-type grow \
-                 --transition-duration 0.5 \
-                 --transition-bezier 1,0.9,1,0.7 \
-                 --invert-y \
-                 "$HOME/wallpapers/$SELECTED"
-        matugen image "$HOME/wallpapers/$SELECTED" -t scheme-vibrant
-        walcord
-		swaync-client --reload-css
-		rm $HOME/wallpapers/blurred.png
-        convert "$HOME/wallpapers/$SELECTED" -blur 0x30 -modulate 100,70 \
-          "$HOME/wallpapers/blurred.png"
-        swww img -n overlay "$HOME/wallpapers/blurred.png"
+    SELECTED=$(cat "$TEMPFILE")
+    [ -n "$SELECTED" ] || break
 
-        break
-    else
-        break
-    fi
+    swww img --transition-fps 60 --transition-type outer --transition-step 90 --transition-pos 0.854,0.997 "$SELECTED"
+
+    (
+        matugen image "$SELECTED" -t scheme-vibrant &
+        walcord &
+        swaync-client --reload-css &
+        rm -f "$WALLPAPER_DIR/blurred.png"
+        convert "$SELECTED" -blur 0x30 -modulate 100,70 "$WALLPAPER_DIR/blurred.png"
+        swww img -n overlay "$WALLPAPER_DIR/blurred.png"
+    ) >/dev/null 2>&1 & disown
+
+    break
 done

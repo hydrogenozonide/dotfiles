@@ -27,3 +27,6 @@ My silly Niri dotfiles, managed via [Chezmoi](https://www.chezmoi.io/). I can't 
  - [ ] Improve the styling of Rmpc
  - [ ] Rewrite in Quickshell
  - [ ] Nicer power menu
+
+# Credits
+I don't own any of the rights to the wallpapers, they're all pulled from Unsplash, Wallhaven or other peoples' wallpaper repos. Most of my Matugen templates are pulled from the [Matugen Themes](https://github.com/InioX/matugen-themes) repo, some with minor changes for my system. The rest of the configs are my own, some with minor inspiration from other peoples' dots but without any exact code copying.
