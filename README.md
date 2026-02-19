@@ -17,9 +17,9 @@ My silly Niri dotfiles, managed via [Chezmoi](https://www.chezmoi.io/). I can't 
 
 # TODO
 
- - [ ] Rewrite in ~~Quickshell~~ Fabric! I've found it a lot easier so far
+ - [ ] ~~Rewrite in Quickshell~~ It's still in the earliest possible of stages, but work on this has been moved to [Rivulet]() to keep this repo stable.
  - [ ] Unified install script
- - [x] Better wallpaper script
+ - [x] ~~Better wallpaper script~~
  - [ ] Fiddle with Niri a little more
  - [ ] Make an actually good panel
  - [ ] Screw with Matugen to maybe get some nicer colours
