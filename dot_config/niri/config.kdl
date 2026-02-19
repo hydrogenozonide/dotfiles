@@ -52,11 +52,14 @@ include "colors.kdl"
 
 spawn-at-startup "waybar"
 spawn-at-startup "swww-daemon"
-spawn-sh-at-startup "swww-daemon -n overlay"
-spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+
 spawn-at-startup "libnotify"
 spawn-at-startup "swaync"
 spawn-at-startup "swayosd-server"
+
+spawn-sh-at-startup "swww-daemon -n overlay"
+spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+spawn-at-startup "~/.local/bin/niri-sidebar" "listen"
 
 hotkey-overlay {
     skip-at-startup
@@ -69,7 +72,7 @@ screenshot-path "~/screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 
 overview {
-	zoom 0.4
+	zoom 0.45
 }
 
 // i hate this so much but i dont think theres a better way :toki_pensive:
@@ -89,6 +92,11 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match is-floating=true
+    min-width 100
+    min-height 100
+}
 
 window-rule {
     geometry-corner-radius 12
@@ -199,7 +207,7 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    Mod+V       { toggle-window-floating; }
+    Mod+V { toggle-window-floating; }
 
     Mod+W { toggle-column-tabbed-display; }
 
@@ -212,4 +220,10 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     Mod+Shift+F { fullscreen-window; }
+
+    Mod+S { spawn-sh "~/.local/bin/niri-sidebar toggle-window"; }
+    Mod+Shift+S { spawn-sh "~/.local/bin/niri-sidebar toggle-visibility"; }
+    Mod+Ctrl+S { spawn-sh "~/.local/bin/niri-sidebar flip"; }
+    Mod+Alt+S { spawn-sh "~/.local/bin/niri-sidebar reorder"; }
+
 }
