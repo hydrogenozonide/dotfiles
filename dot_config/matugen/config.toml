@@ -1,4 +1,9 @@
 [config]
+reload_apps = true
+
+[config.wallpaper]
+command = "swww"
+set = false
 
 [templates.niri]
 input_path = '~/.config/matugen/templates/niri-colors.kdl'
@@ -41,6 +46,5 @@ output_path = "~/programs/web/lothlorien/colors.css"
 
 
 [templates.obsidian]
-input_path = '~/.config/matugen/templates/obsidian-colors.json'
-output_path = '~/Documents/Vault/.obsidian/plugins/obsidian-style-settings/data.json'
-post_hook = '''sed -E -i 's/("accentColor": ")[^"]*(")/\\1{{colors.surface.default.hex}}\\2/g' ~/Documents/Vault/.obsidian/appearance.json'''
+input_path = "~/.config/matugen/templates/obsidian.css"
+output_path = "~/Documents/Vault/.obsidian/themes/Border/theme.css"
