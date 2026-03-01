@@ -15,7 +15,7 @@ input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/themes/Matugen.conf'
 post_hook = "kitty +kitten themes --reload-in=all Matugen"
 
-[templates.hyprland]
+[templates.hyprlock]
 input_path = '~/.config/matugen/templates/hypr-colors.conf'
 output_path = '~/.config/hypr/colors.conf'
 
@@ -40,11 +40,10 @@ output_path = '~/.config/waybar/colors.css'
 input_path = '~/.config/matugen/templates/vesktop.css'
 output_path = '~/.config/vesktop/themes/midnight-discord.css'
 
-[templates.web]
+[templates.start]
 input_path = "~/.config/matugen/templates/web-colors.css"
 output_path = "~/programs/web/lothlorien/colors.css"
 
-[templates.obsidian]
-input_path = './templates/obsidian.json'
-output_path = '~/Documents/Vault/.obsidian/plugins/obsidian-style-settings/data.json'
-post_hook = '''sed -E -i 's/("accentColor": ")[^"]*(")/\\1{{colors.surface.default.hex}}\\2/g' ~/Documents/Vault/.obsidian/appearance.json'''
+[templates.Obsidian]
+input_path = "~/.config/matugen/templates/obsidian.css"
+output_path = "~/Documents/Vault/.obsidian/snippets/matugen.css"
