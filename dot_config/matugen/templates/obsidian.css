@@ -1,7 +1,7 @@
 .theme-dark {
-	--accent-h:calc({{colors.primary.dark.hue}}/255*360);
-	--accent-s:calc({{colors.primary.dark.saturation}}/255*100%);
-	--accent-l:calc({{colors.primary.dark.lightness}}/255*100%);
+	--accent-h:calc({{colors.primary.dark.hue}});
+	--accent-s:calc({{colors.primary.dark.saturation}});
+	--accent-l:calc({{colors.primary.dark.lightness}});
 
   --text-normal:{{colors.on_surface.dark.hex}};
   --text-muted:{{colors.on_surface_variant.dark.hex}};
@@ -66,8 +66,8 @@
   --text-muted:{{colors.on_surface_variant.light.hex}};
   --text-faint:{{colors.outline.light.hex}};
 
-  --background-primary:{{colors.surface.light.hex}}; /* editor and right ribbon */
-  --background-secondary:{{colors.surface_dim.light.hex}}; /* left ribbon */ 
+  --background-primary:{{colors.surface.light.hex}};
+  --background-secondary:{{colors.surface_dim.light.hex}};
   --background-modifier-hover:{{colors.secondary_container.light.hex}};
   --background-modifier-active-hover:{{colors.secondary.light.hex}};
   --background-modifier-message:{{colors.surface_dim.light.hex}};
